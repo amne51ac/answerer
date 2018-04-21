@@ -6,8 +6,7 @@ def answerer(question, a1, a2, a3):
     a1 = a1
     a2 = a2
     a3 = a3
-    print('what the fuck')
-
+    
 
 def search(term):
     url = 'http://www.google.com/search?q={}'
