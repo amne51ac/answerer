@@ -15,9 +15,13 @@ def answerer(question, a1, a2, a3):
 
 def search(term):
     url = "https://www.google.com/search?q={}"
+    return http_query(url.format(term))
+
+
+def http_query(address):
     key = 'User-Agent'
     value = 'Mozilla/5.0'
-    req = Request(url.format(term), headers={key: value})
+    req = Request(address, headers={key: value})
     gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)  # Only for gangstars
     web_bin = urlopen(req, context=gcontext).read()
     web_html = web_bin.decode('utf-8')
