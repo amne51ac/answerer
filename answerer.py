@@ -1,5 +1,4 @@
-from urllib import request
-import urllib.parse
+from urllib import request, parse
 
 
 def answerer(question, a1, a2, a3):
@@ -11,9 +10,21 @@ def answerer(question, a1, a2, a3):
 
 
 def search(term):
-    url = 'https://www.google.com/search?q={}'
-    f = request.urlopen(url.format(term))
-    return f.read().decode('utf-8')
+    url = 'http://www.google.com/search?q={}'
+    with request.urlopen(url.format(term)) as f:
+        return f.read().decode('utf-8')
 
 def split_results(results):
     pass
+
+def request_pages(url):
+    pass
+
+def check_answer():
+    pass
+
+def score_answers():
+    pass
+
+print(search('test'))
+
