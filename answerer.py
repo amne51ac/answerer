@@ -14,17 +14,21 @@ def search(term):
     with request.urlopen(url.format(term)) as f:
         return f.read().decode('utf-8')
 
+
 def split_results(results):
     pass
+
 
 def request_pages(url):
     pass
 
+
 def check_answer():
     pass
+
 
 def score_answers():
     pass
 
-print(search('test'))
 
+print(search('test'))
