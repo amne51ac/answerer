@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 
 from urllib.request import Request, urlopen
 import ssl
-
+import re
 from urllib.request import Request, urlopen
 
 
@@ -28,6 +28,10 @@ def http_query(address):
     return web_html
 
 
+def get_links(html):
+    return re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', html)
+
+
 def split_results(results):
     pass
 
@@ -44,4 +48,4 @@ def score_answers():
     pass
 
 
-print(search('test'))
+print(get_links(search('test')))
