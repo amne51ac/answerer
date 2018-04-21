@@ -1,5 +1,10 @@
 from urllib.request import Request, urlopen
 
+from urllib.request import Request, urlopen
+import ssl
+
+from urllib.request import Request, urlopen
+
 
 def answerer(question, a1, a2, a3):
     question = question
@@ -10,9 +15,13 @@ def answerer(question, a1, a2, a3):
 
 def search(term):
     url = "https://www.google.com/search?q={}"
-    req = Request(url.format(term), headers={'User-Agent': 'Mozilla/5.0'})
-    response = urlopen(req).read()
-    response.decode('utf-8')
+    key = 'User-Agent'
+    value = 'Mozilla/5.0'
+    req = Request(url.format(term), headers={key: value})
+    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)  # Only for gangstars
+    web_bin = urlopen(req, context=gcontext).read()
+    web_html = web_bin.decode('utf-8')
+    return web_html
 
 
 def split_results(results):
