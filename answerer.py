@@ -1,4 +1,4 @@
-from urllib import request, parse
+from urllib.request import Request, urlopen
 
 
 def answerer(question, a1, a2, a3):
@@ -6,12 +6,13 @@ def answerer(question, a1, a2, a3):
     a1 = a1
     a2 = a2
     a3 = a3
-    
+
 
 def search(term):
-    url = 'http://www.google.com/search?q={}'
-    with request.urlopen(url.format(term)) as f:
-        return f.read().decode('utf-8')
+    url = "https://www.google.com/search?q={}"
+    req = Request(url.format(term), headers={'User-Agent': 'Mozilla/5.0'})
+    response = urlopen(req).read()
+    response.decode('utf-8')
 
 
 def split_results(results):
